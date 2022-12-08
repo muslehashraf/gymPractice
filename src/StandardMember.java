@@ -9,6 +9,24 @@ public class StandardMember extends Member {
     @Override
     public void workingOut(String duration) {
         System.out.println("Standard member is working out for " + duration + ".");
+
+        // duration  = xx hour xx minutes
+        // duration  = xx minutes
+        // duration  = x minutes
+
+
+        if (duration.toLowerCase().contains("hour")) {
+            System.out.println("Beast mode!");
+        } else {
+            int mins = Integer.parseInt(duration.substring(0, duration.indexOf(" ")));
+            if (mins <= 30) {
+                System.out.println("Not a good workout!");
+            } else {
+                System.out.println("Not bad!");
+            }
+        }
+
+
     }
 
     @Override
@@ -39,10 +57,8 @@ public class StandardMember extends Member {
     }
 
     public static void main(String[] args) {
-        System.out.println(getStandardMember());
-        System.out.println();
-        System.out.println(getStandardMember());
-        System.out.println();
-        System.out.println(getStandardMember());
+        getStandardMember().workingOut("1 hour 20 minutes");
+        getStandardMember().workingOut("20 minutes");
+        getStandardMember().workingOut("40 minutes");
     }
 }
